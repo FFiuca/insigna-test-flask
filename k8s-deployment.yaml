@@ -40,3 +40,23 @@ spec:
   - port: 80
     targetPort: 5000
   type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: igres-flask
+  namespace: insigna-flask
+  labels:
+    app.kubernetes.io/name: igres-flask
+spec:
+  rules:
+  - host: domain.example.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/api"
+        backend:
+          service:
+            name: svc-flask
+            port:
+              number: 80
