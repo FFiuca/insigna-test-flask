@@ -26,6 +26,8 @@ jobs:
 
     - name: Build Docker image
       run: |
+        pwd
+        ls -la
         docker build -t $DOCKERHUB_USERNAME/$IMAGE_NAME:$GITHUB_SHA \
           -t $DOCKERHUB_USERNAME/$IMAGE_NAME:latest \
           ./q1/project
